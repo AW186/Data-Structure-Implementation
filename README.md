@@ -10,3 +10,5 @@ make
 ### Data structure currently implemented
 
 + Hashtable
++ Red black tree
++ Heap
