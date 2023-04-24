@@ -5,3 +5,7 @@ hashtable: hashtable.cpp hashtable.hpp
 
 heap: heap.cpp heap.hpp
 	g++ -o heap heap.cpp
+
+clear:
+	rm hashtable
+	rm heap
