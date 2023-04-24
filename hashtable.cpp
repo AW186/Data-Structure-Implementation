@@ -12,7 +12,7 @@ int hashfunc(int val) {
 int main() {
     HashTable<int, int> *table;
     char c;
-    cout << "Chained hash (reply 'C') or open hash (reply O) " << endl;
+    cout << "Chained hash (reply 'C') or open hash (reply 'O') " << endl;
     cin >> c;
     if (c == 'C') {
         table = new ChainedHashTable<int, int>(hashfunc, HASHSIZE);
