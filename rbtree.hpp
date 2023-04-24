@@ -38,7 +38,6 @@ private:
     Node<T> *root;
     bool (* cmp)(T, T);
     void leftRotate(Node<T> **node) {
-        cout << "rotate left" << endl;
         Node<T> *x = *node;
         if (!x->right) return;
         Node<T> *y = x->right;
@@ -48,7 +47,6 @@ private:
         *node = y;
     }
     void rightRotate(Node<T> **node) {
-        cout << "rotate right" << endl;
         Node<T> *x = *node;
         if (!x->left) return;
         Node<T> *y = x->left;
@@ -59,12 +57,10 @@ private:
     }
 
     bool fix(Node<T> *z) {
-        cout << "fixing" << endl;
         return !z->parent || !GRANDPA(z) || 
             tryCase1(z) || tryCase2(z) || tryCase3(z);
     }
     bool tryCase1(Node<T> *z) {
-        cout << "case 1" << endl;
         if (GRANDPA(z)->left && GRANDPA(z)->right && \
             GRANDPA(z)->left->color && GRANDPA(z)->right->color) {
             GRANDPA(z)->left->color = BLACK;
@@ -75,16 +71,13 @@ private:
         } else return false;
     }
     bool tryCase2(Node<T> *z) {
-        cout << "case 2" << endl;
         Node<T> *p = z->parent;
         Node<T> *g = GRANDPA(z);
         if (z == p->left && p == g->right) {
-            cout << "case 2 right" << endl;
             rightRotate(&(g->right));
             tryCase3(p);
             return true;
         } else if (z == p->right && p == g->left) {
-            cout << "case 2 left" << endl;
             leftRotate(&(g->left));
             tryCase3(p);
             return true;
@@ -95,11 +88,9 @@ private:
             if (z->parent->left == z) return &z->parent->left;
             if (z->parent->right == z) return &z->parent->right;
         } return &root;
-        cout << "structure ERROR" << endl;
         return NULL;
     }
     bool tryCase3(Node<T> *z) {
-        cout << "case 3" << endl;
         Node<T> *p = z->parent;
         Node<T> *g = GRANDPA(z);
         if (z == p->left && p == g->left) {
