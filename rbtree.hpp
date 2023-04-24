@@ -65,7 +65,8 @@ private:
     }
     bool tryCase1(Node<T> *z) {
         cout << "case 1" << endl;
-        if (GRANDPA(z)->left->color && GRANDPA(z)->right->color) {
+        if (GRANDPA(z)->left && GRANDPA(z)->right && \
+            GRANDPA(z)->left->color && GRANDPA(z)->right->color) {
             GRANDPA(z)->left->color = BLACK;
             GRANDPA(z)->right->color = BLACK;
             GRANDPA(z)->color = RED;
@@ -124,6 +125,7 @@ public:
             root = node;
             return;
         }
+        node->color = RED;
         for (Node<T> *current = root; 1; ) {
             if (cmp(e, current->val)) {
                 if (!current->left) {
@@ -161,7 +163,20 @@ public:
         }
     }
     void printTree() {
-        
+        printTree(root, 0);
+    }
+    void printSpaces(int spaces) {
+        for (int i = 0; i < spaces; i++) {
+            cout << " ";
+        }
+    }
+    void printTree(Node<T> *t, int spaces) {
+        if (!t) return;
+        printSpaces(spaces);
+        if (t->color == RED) cout << "\033[1;31m" << t->val << "\033[0m" << endl;
+        else cout << t->val << endl;
+        printTree(t->left, spaces + 2);
+        printTree(t->right, spaces + 2);
     }
 };
 

@@ -15,6 +15,7 @@ int main() {
         cin >> val;
         if (val == 0) break;
         t->insert(val);
+        t->printTree();
     }
     cout << "height: " << t->height() << endl; 
     t->inorderPrint();

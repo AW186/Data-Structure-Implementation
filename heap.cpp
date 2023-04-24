@@ -16,7 +16,7 @@ int main() {
         cin >> value;
         if (!value) break;
         heap->insert(value);
-        heap->printTree();
+        // heap->printTree();
     }
     heap->print();
 }
